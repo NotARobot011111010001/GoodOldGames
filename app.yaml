@@ -1,1 +1,9 @@
 runtime: python39
+
+env_variables:
+  CLOUD_SQL_USERNAME: mhg01
+  CLOUD_SQL_PASSWORD: Guljiggle123!
+  CLOUD_SQL_DATABASE_NAME: games_info
+  CLOUD_SQL_CONNECTION_NAME: advanced-dev-lab-02:europe-west2:advdevproj
+
+  

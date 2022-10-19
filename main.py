@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify, request, make_response
 import sys, json
+from db import get, create
 # from werkzeug.wrappers import response
 
 app = Flask(__name__)
@@ -30,6 +31,27 @@ def login():
         password = request.form['password']
 
     return render_template('login.html')
+
+app.route('/store', methods=['GET'])
+def get_games():
+    """
+    Gets all the games list from the database
+    :return: games from database
+    """
+    return get()
+
+
+@app.route('/add', methods=['POST'])
+def add_game():
+    """
+    adds the game information to the table
+    :return: Game added message
+    """
+    if not request.is_json:
+        return jsonify({"msg": "Missing JSON in request"}), 400
+
+    create(request.get_json())
+    return 'Game Added'
 
 
 if __name__ == "__main__":
