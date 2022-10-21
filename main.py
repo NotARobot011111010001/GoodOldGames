@@ -53,6 +53,9 @@ def add_game():
     create(request.get_json())
     return 'Game Added'
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
 
 if __name__ == "__main__":
     # Used when running locally only. When deploying to Google App
