@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+{% set active_page = "register" %}
+{% block content %}
+
+<div class="starter-template">
+  <h1>Register your Account </h1>
+  <p class="lead">Please type your information to register an account.</i></p>
+</div>
+
+<div id="main">
+  <form method="post" action="{{ url_for('submitted_form') }}">
+    <label for="name">Username: </label>
+    <input type="text" name="name"><br />
+    <label for="email">Email address: </label>
+    <input type="email" name="email" id ="emailAdd" placeholder="Email" aria-required="true" required><br />
+    <label for="ConfrimEmail">Confirm your email address: </label>
+    <input type="email" name="email" placeholder="Confirm Email" onblur="if(this.value!=document.getElementById('emailAdd').value) alert('Email do not match.')" aria-required="true" required><br />
+    <label for="password">Password: </label>
+    <input type="password" name="password" placeholder="Password" aria-required="true" required><br />
+    <input type="submit">
+  </form>
+</div>
+
+
+{% endblock %}

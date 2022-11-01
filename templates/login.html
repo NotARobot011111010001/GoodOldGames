@@ -1,45 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "index.html" %}
+{% set active_page = "login" %}
+{% block content %}
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width initial-scale=1">
-    <meta http-equiv="X-UA-Compatimble" content="ie=edge">
-    <title>Login to the Store</title>
-    <link rel="stylesheet" type="text/css" href="/static/style.css">
-    <script src = "/static/scripts/script.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+    <script src="/static/scripts/login_functions.js"></script>
 </head>
 
+
+<h1>Welcome Back!</h1>
+<p>You must log in to access your purchased games!</p>
+
 <body id="loginBody" >
-    <section id="selection">
-        <div id="loginMain">
-        <div class="login-container">
-            <div class="img-box">
-                <h1> Welcome To The ______ Game Store!</h1> 
-            </div>
-        </div>
-
-            <!-- Login Form -->
-            <div class="login-form" id="formLogin">
-                <form action="{{ url_for('login') }}" method="post" onsubmit="return false">
-                    <div class="form-controls">
-                        <h2>Hello Visitor!</h2>
-                        <p>You must log in to access your purchased games!</p>
-
-                        <input class="form-control" type="text" placeholder="Enter your email/username" id="email" autocomplete="off" required>
-                        <input class="form-control" type="password" placeholder="Enter your password" id="password" autocomplete="off" required>
-                            <div class="login-btns">
-                                <input type="Submit" id="login_submit" value="Login" onclick=""/>
-                                <!--<button class="register-btn" name="register" > <a href="/static/scripts/register_functions.js" target="_self"> Register<a/></button> -->
-                            </div>
-                        <a href="{{ url_for('index')}}">Continue without login in</a>
-                    </div>
+    <div id="loginMain">
+    <div id="firebaseui-auth-container"></div>
+    <div id="loader">Loading...</div>
+    </div>
+        <!-- Login Form -->
+        <div class="login-form" id="formLogin">
+            <form>
+                <div class="group">
+                    <input id="txtEmail" type="email">
+                    <label>Email</label>
+                </div>
+                <div class="group">
+                    <input id="txtPassword" type="password">
+                    <label>Password</label>
+                </div>
+                <div id="divLoginError" class="group">
+                    <!--<div id="lblLoginErrorMessage" class="errorlabel">Error message</div>-->
+                </div>
+                <button id="btnLogin" type="button" class="button buttonBlue" onclick="Login()">Log in</button>
+                <button id="btnSignup" type="button" class="button buttonBlue">Sign up</button>
+                </form>
+                <a href="{{ url_for('index') }}"> Continue without logging in?</a>
             </form>
         </div>
     </div>
-</div>
-</section>
-
-
 
 </body>
-</html>
+{% endblock %}
