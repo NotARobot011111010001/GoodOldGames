@@ -15,11 +15,12 @@
         <!-- <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet"> -->
         <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
         <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
 
     </head>
     
     <!-- Jinja2 stuff related to generating nav and setting active state. Add more pages here! -->
-    {% set navigation_bar = [('/', 'home', 'Home'), ('/about', 'about', 'About'), ('/register','register','Register'), ('/login', 'login', 'Login')] -%}
+    {% set navigation_bar = [('/', 'home', 'Home'), ('/about', 'about', 'About'), ('/login', 'login', 'Login')] -%}
 
     {% set active_page = active_page|default('home') -%}
 
