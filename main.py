@@ -1,7 +1,8 @@
 from flask import Flask, render_template, jsonify, request, make_response
 import sys, json
-from db import get, create
+from sql_db import get, create
 import logging
+from pymongo import MongoClient
 # from werkzeug.wrappers import response
 
 app = Flask(__name__)
@@ -15,8 +16,8 @@ def index():  # put application's code here
     return render_template("home.html")
 
 
-@app.route('/home')
-@app.route('/')
+@app.route('/home', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def home():
     """
     loads the main page of the website
@@ -48,7 +49,7 @@ def form():
 
 
 # [START submitted]
-@app.route('/submitted', methods=['POST'])
+"""@app.route('/submitted', methods=['POST'])
 def submitted_form():
     name = request.form['name']
     email = request.form['email']
@@ -60,7 +61,7 @@ def submitted_form():
         name=name,
         email=email
     )
-    # [END render_template]
+    # [END render_template]"""
 
 
 app.route('/store', methods=['GET'])

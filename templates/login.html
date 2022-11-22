@@ -1,43 +1,64 @@
+
 {% extends "index.html" %}
 {% set active_page = "login" %}
 {% block content %}
 
 <head>
+    <script src="/static/scripts/login_functions.js"></script>
+    <!-- Firebase UI -->
+    <script src = "https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        const firebaseConfig = {
+          apiKey: "AIzaSyDQlIGXWIpmWdIsMAkN5rPwLcMn-qYj4gQ",
+          authDomain: "advdev-mhg01.firebaseapp.com",
+          projectId: "advdev-mhg01",
+          storageBucket: "advdev-mhg01.appspot.com",
+          messagingSenderId: "1066735832819",
+          appId: "1:1066735832819:web:1a2701ad5db46808cc7186",
+          measurementId: "G-LT8S234XKF"
+        };
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
-    <script src="/static/scripts/login_functions.js"></script>
 </head>
 
-
-<h1>Welcome Back!</h1>
-<p>You must log in to access your purchased games!</p>
-
-<body id="loginBody" >
-    <div id="loginMain">
+<body>
+    <h1 id="login-welcome">Welcome!</h1>
+    <p id="before-login">You must log in to access your purchased games!</p>
     <div id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-    </div>
-        <!-- Login Form -->
-        <div class="login-form" id="formLogin">
-            <form>
-                <div class="group">
-                    <input id="txtEmail" type="email">
-                    <label>Email</label>
-                </div>
-                <div class="group">
-                    <input id="txtPassword" type="password">
-                    <label>Password</label>
-                </div>
-                <div id="divLoginError" class="group">
-                    <!--<div id="lblLoginErrorMessage" class="errorlabel">Error message</div>-->
-                </div>
-                <button id="btnLogin" type="button" class="button buttonBlue" onclick="Login()">Log in</button>
-                <button id="btnSignup" type="button" class="button buttonBlue">Sign up</button>
-                </form>
-                <a href="{{ url_for('index') }}"> Continue without logging in?</a>
-            </form>
-        </div>
-    </div>
+
+    <button id="sign-out" hidden="true" class="w3-button w3-ripple w3-red w3-round">Sign Out</button>
+    <button id="reset-password" hidden="true" class="w3-button w3-ripple w3-blue w3-round">Reset Password</button>
 
 </body>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.9.0/firebase-auth.js"></script>
+
+<script>
+    const firebaseConfig = {
+    apiKey: "AIzaSyDQlIGXWIpmWdIsMAkN5rPwLcMn-qYj4gQ",
+    authDomain: "advdev-mhg01.firebaseapp.com",
+    projectId: "advdev-mhg01",
+    storageBucket: "advdev-mhg01.appspot.com",
+    messagingSenderId: "1066735832819",
+    appId: "1:1066735832819:web:1a2701ad5db46808cc7186",
+    measurementId: "G-LT8S234XKF"    
+};
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    //firebase.analytics();
+</script>
 {% endblock %}
