@@ -55,6 +55,7 @@ window.addEventListener('load', function() {
       
       // Update the login state indicators.
       document.getElementById('sign-out').hidden = true;
+      document.getElementById('login-welcome').innerHTML = 'Welcome!';
       
       // Clear the token cookie.
       document.cookie = "token=";

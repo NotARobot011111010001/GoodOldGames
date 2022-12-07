@@ -8,6 +8,7 @@
         <meta name="author" content="MHG">
 
         <title>________ Game Store</title>
+        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
         
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -20,7 +21,7 @@
     </head>
     
     <!-- Jinja2 stuff related to generating nav and setting active state. Add more pages here! -->
-    {% set navigation_bar = [('/', 'home', 'Home'), ('/about', 'about', 'About'), ('/login', 'login', 'Login')] -%}
+    {% set navigation_bar = [('/', 'home', 'Home'), ('/about', 'about', 'About'), ('/reviews', 'reviews', 'Reviews'), ('/login', 'login', 'Login')] -%}
 
     {% set active_page = active_page|default('home') -%}
 
