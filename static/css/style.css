@@ -2,8 +2,9 @@
  * Padding for the body (to accomodate the fixed nav-bar).
  */
 body {
-    padding-top: 5rem;
+    padding-top: 10rem;
     padding-left: 3rem;
+	padding-right: 2em;
 }
 
 /**
@@ -15,15 +16,13 @@ p {
 }
 
 h3 {
-    padding: 2em;
     text-align: center;
-    font-weight:300;
+    font-weight:200;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 h1 {
     text-align: center;
-
 }
 
 .starter-template {
@@ -32,12 +31,16 @@ h1 {
 }
 
 form {
-	width: 380px;
-	margin: 4em auto;
-	padding: 3em 2em 2em 2em;
-	background: #fafafa;
+	width: 500px;
+	margin: 2em auto;
+	padding: 2em 2em 2em 2em;
+	background: #f0f0f0;
 	border: 1px solid #ebebeb;
 	box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+}
+
+.form-inline{
+	display: block;
 }
 
 .group { 

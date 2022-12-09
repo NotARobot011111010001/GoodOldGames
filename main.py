@@ -1,9 +1,18 @@
 from flask import Flask, render_template, jsonify, request, make_response
-import sys, json
+import sys, json, datetime
 from sql_db import get, create
 import logging
 from pymongo import MongoClient
-# from werkzeug.wrappers import response
+#from mongodb import get_mongodb_items
+from mongodb import *
+from bson.json_util import dumps
+#from google.cloud import datastore
+
+
+#firebase_request_adapter = requests.Request()
+# [END gae_python3_auth_verify_token]
+# [END gae_python38_auth_verify_token]
+#datastore_client = datastore.Client()
 
 app = Flask(__name__)
 """
@@ -13,6 +22,9 @@ Loading HTML pages.
 
 @app.route('/')
 def index():  # put application's code here
+    """
+    Loads the home page for the game store
+    """
     return render_template("home.html")
 
 
@@ -33,10 +45,6 @@ def login():
     """
     if_error = render_template('404.html')  # if something goes wrong,this will show
 
-    #if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
-    #    username = request.form['username']  # requesting username & password using the .form from <form> in HTML
-    #    password = request.form['password']
-
     return render_template('login.html')
 
 @app.route('/about')
@@ -48,21 +56,25 @@ def form():
     return render_template('register.html')
 
 
-# [START submitted]
-"""@app.route('/submitted', methods=['POST'])
-def submitted_form():
-    name = request.form['name']
-    email = request.form['email']
+@app.route('/reviews', methods=["GET"])
+def reviews():
+    if request.method == "GET":
+        #return get_mongodb_items()
+        data = json.loads(get_mongodb_items()) # gets data from mongoDB python function
+        return render_template('reviews.html', data=data)
 
-    # [END submitted]
-    # [START render_template]
-    return render_template(
-        'submitted_form.html',
-        name=name,
-        email=email
-    )
-    # [END render_template]"""
+    return render_template('reviews.html')#, jsonify(game_name)    
 
+'''@app.route('/createpost', methods=['POST'])
+def createPost():
+    title = request.form['title']
+    content = request.form['content']
+    dateCreated = datetime.datetime.now().year
+    thumbnail = ""
+
+    if title and content:
+        store_post_mongodb(title, "Admin", content, dateCreated, thumbnail)
+    return jsonify({'message': "Post submitted!"})'''
 
 app.route('/store', methods=['GET'])
 def get_games():
@@ -95,8 +107,9 @@ def server_error(e):
     logging.exception('An error occurred during a request.')
     return 'An internal error occurred.', 500
 
+
 if __name__ == "__main__":
     # Used when running locally only. When deploying to Google App
     # Engine, a webserver process such as Gunicorn will serve the app. This
     # can be configured by adding an `entrypoint` to app.yaml.
-    app.run(host="localhost", port=5000, debug=True)
+    app.run(host="localhost", port=8080, debug=True)
