@@ -5,6 +5,7 @@ body {
     padding-top: 10rem;
     padding-left: 3rem;
 	padding-right: 2em;
+	padding-bottom: 5em;
 }
 
 /**
@@ -12,7 +13,7 @@ body {
 * https://v4-alpha.getbootstrap.com/content/typography/#responsive-typography
 */
 p {
-    font-size: 1.2em;
+    font-size: 0.8em;
 }
 
 h3 {
@@ -26,12 +27,12 @@ h1 {
 }
 
 .starter-template {
-    padding: 3rem 1.5rem;
+    padding: 5rem 1.5rem;
     text-align: center;
 }
 
 form {
-	width: 500px;
+	width: 400px;
 	margin: 2em auto;
 	padding: 2em 2em 2em 2em;
 	background: #f0f0f0;
@@ -46,6 +47,16 @@ form {
 .group { 
 	position: relative; 
 	margin-bottom: 45px; 
+}
+
+footer {
+	position:static;
+  	left: 0;
+	bottom: 0;
+	width: 110%;
+	background-color: darkgrey;
+	color: black;
+	text-align: center;
 }
 
 input {

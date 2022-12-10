@@ -24,30 +24,32 @@ def get_mongodb_items():
     # create queries
     game_query = {"content": {"$text": "/C/"}}
     #print(game_query)
-      # create queries
+    # create queries
     """title_query = {"title": {"$eq": "Best game I have ever played"}}
     author_query = {"author": {"$eq": "Powdered_Toast_Man"}}
     dateCreated_query = {"dateCreated": {"$eq": 2018}}
     myCursor = mongoDB_collection.find({"$and": [title_query, author_query, dateCreated_query]})"""
     
-    title_query = {"game": {"$in": ["Cyberpunk 2077", "The Witcher 3: Wild Hunt"]}}
-    dateCreated_query = {"dateCreated": {"$gt": 2017}}
+    title_query = {"game": {"$in": ["Cyberpunk 2077", "The Witcher 3: Wild Hunt", "Battlefield 4", "Battlefield 2042", ]}}
+    dateCreated_query = {"dateCreated": {"$gt": 2015}}
     myCursor = mongoDB_collection.find({"$and": [title_query, dateCreated_query]})
 
     list_cur = list(myCursor)
-    print(list_cur)
+    #print(list_cur)
     
     json_data = dumps(list_cur)
     return json_data
 
-def store_post_mongodb(game, title, author, dateCreated,thumbnail, content):
+def store_post_mongodb(game_name, title, author, dateCreated, content):
     """
     Stores the post into Mongo collection
     - writes reviews to MongoDB
     """
     # Write to MongoDB
-    json_data = {"game": game, "title": title, "author": author, "dateCreated": dateCreated, "thumbnal": thumbnail, "content": content}
-    mongoDB_collection.insert_one(json_data)
+    json_data_to_mongoDB = {"game": game_name, "title": title, "author": author, "dateCreated": dateCreated, "content": content}
+
+    print(json_data_to_mongoDB)
+    mongoDB_collection.insert_one(json_data_to_mongoDB)
 
 
 

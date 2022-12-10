@@ -3,7 +3,6 @@ import sys, json, datetime
 from sql_db import get, create
 import logging
 from pymongo import MongoClient
-#from mongodb import get_mongodb_items
 from mongodb import *
 from bson.json_util import dumps
 #from google.cloud import datastore
@@ -65,16 +64,23 @@ def reviews():
 
     return render_template('reviews.html')#, jsonify(game_name)    
 
-'''@app.route('/createpost', methods=['POST'])
+@app.route('/createpost', methods=['POST', 'GET'])
 def createPost():
+    #game_name = request.form['game']
+    game_name = "Cyberpunk 2077" """ Need to fix this later, for now it works and saves to MongoDB!!! """
     title = request.form['title']
-    content = request.form['content']
+    author = request.form['author']
     dateCreated = datetime.datetime.now().year
-    thumbnail = ""
+    content = request.form['content']
+    
+    print(title, author, content, dateCreated, game_name)
 
-    if title and content:
-        store_post_mongodb(title, "Admin", content, dateCreated, thumbnail)
-    return jsonify({'message': "Post submitted!"})'''
+    json_stuff = jsonify(game_name, title, author, dateCreated, content)
+    print(json_stuff)
+
+    if game_name and title and author and content:
+        store_post_mongodb(game_name, title, author, dateCreated, content)
+    return jsonify({'message': "Post submitted!"})
 
 app.route('/store', methods=['GET'])
 def get_games():
