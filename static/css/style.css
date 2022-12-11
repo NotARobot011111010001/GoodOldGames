@@ -49,6 +49,10 @@ form {
 	margin-bottom: 45px; 
 }
 
+button {
+	margin-left: 5em;
+}
+
 footer {
 	position:static;
   	left: 0;

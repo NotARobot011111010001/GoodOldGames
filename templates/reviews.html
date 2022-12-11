@@ -61,19 +61,6 @@
         </div>
     </br>
             <button id="btn" type="submit" class="btn btn-default" >Add Review</button>
-            <!--<script>
-                $(document).ready(function () {
-                    $('#btn').click(function () {
-                        $.ajax({
-                            url: 'https://api.github.com/users/hadley/orgs',
-                            dataType: 'json',
-                            success: function (data) {
-                                console.log(data);
-                            },
-                        });
-                    });
-                });
-            </script> -->
     </form>
         </br>
         <div id="successAlert" class="alert alert-success" role="alert" style="display:none"></div>
@@ -89,7 +76,7 @@
     <div class="container"> <!-- GET reviews from MongoDB -->
 		{% for d in data %}
 			<div class="row" align="center">
-				<div ><!--</div>class="col ">-->
+				<div >
 					<h3><b>Author: </b> {{ d['author'] }}</h3>
                     <h3><b>Game: </b> {{d['game']}}</h3>
 					<h3><b>Title of Review: </b> {{ d['title'] }}</h3>
