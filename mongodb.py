@@ -20,18 +20,10 @@ def get_mongodb_items():
     Gets reviews from MongoDB
     """
     #game_name = request.form['game-name']
-
     # create queries
-    game_query = {"content": {"$text": "/C/"}}
-    #print(game_query)
-    # create queries
-    """title_query = {"title": {"$eq": "Best game I have ever played"}}
-    author_query = {"author": {"$eq": "Powdered_Toast_Man"}}
-    dateCreated_query = {"dateCreated": {"$eq": 2018}}
-    myCursor = mongoDB_collection.find({"$and": [title_query, author_query, dateCreated_query]})"""
     
-    title_query = {"game": {"$in": ["Cyberpunk 2077", "The Witcher 3: Wild Hunt", "Battlefield 4", "Battlefield 2042", ]}}
-    dateCreated_query = {"dateCreated": {"$gt": 2015}}
+    title_query = {"game": {"$in": ["Cyberpunk 2077", "The Witcher 3: Wild Hunt", "Battlefield 4", "Battlefield 2042", "Assasin's Creed Origins", "Assasin's Creed Black Flag" ]}}
+    dateCreated_query = {"dateCreated": {"$gt": 2010}}
     myCursor = mongoDB_collection.find({"$and": [title_query, dateCreated_query]})
 
     list_cur = list(myCursor)

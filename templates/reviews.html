@@ -76,12 +76,13 @@
     <div class="container"> <!-- GET reviews from MongoDB -->
 		{% for d in data %}
 			<div class="row" align="center">
-				<div ><!--</div>class="col ">-->
+				<div >
 					<h3><b>Author: </b> {{ d['author'] }}</h3>
                     <h3><b>Game: </b> {{d['game']}}</h3>
 					<h3><b>Title of Review: </b> {{ d['title'] }}</h3>
                     <h3><b>Date Created: </b>{{ d['dateCreated'] }}</h3>       
                     <p><b>Description: </b> {{ d['content'] }}</p>
+                    <button id="delete-review" class="w3-button w3-ripple w3-red w3-round align-center">Delete review</button>
                     </br>
 
 				</div>
