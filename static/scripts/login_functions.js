@@ -3,7 +3,7 @@
 'use strict';
 
 /**
- * Allows the user to log in to the website with an email and password and also using Google.
+ * Allows the user to log in to the website with an email/password and also using Google.
  * It uses FirebaseUI as a backend authentication service to sign-in and authenticate users.
  * 
  * If user is new, then it automatically registers the user
