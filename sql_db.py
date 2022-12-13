@@ -1,4 +1,4 @@
-# db.py
+# db.py - Not using it as MongoDB provides better solutions
 import os
 import pymysql
 from flask import jsonify

@@ -60,7 +60,7 @@
             <textarea id="content" name="content" class="form-control" rows="10" cols="35" placeholder="Your Review"></textarea>
         </div>
     </br>
-            <button id="btn" type="submit" class="btn btn-default" >Add Review</button>
+            <button id="btn" type="submit" class="w3-button w3-ripple w3-blue w3-round align-center btn btn-default" >Add Review</button>
     </form>
         </br>
         <div id="successAlert" class="alert alert-success" role="alert" style="display:none"></div>
@@ -75,14 +75,14 @@
     </div>    
     <div class="container"> <!-- GET reviews from MongoDB -->
 		{% for d in data %}
-			<div class="row" align="center">
+			<div class="row justify-content-center">
 				<div >
 					<h3><b>Author: </b> {{ d['author'] }}</h3>
                     <h3><b>Game: </b> {{d['game']}}</h3>
 					<h3><b>Title of Review: </b> {{ d['title'] }}</h3>
                     <h3><b>Date Created: </b>{{ d['dateCreated'] }}</h3>       
                     <p><b>Description: </b> {{ d['content'] }}</p>
-                    <button id="delete-review" class="w3-button w3-ripple w3-red w3-round align-center">Delete review</button>
+                    <button id="delete-review" class="justify-content-center w3-button w3-ripple w3-red w3-round" type="submit">Delete review</button>
                     </br>
 
 				</div>
