@@ -55,53 +55,44 @@ def form():
     return render_template('register.html')
 
 
+@app.route('/games')
+def games():
+    return render_template('games.html')
+
 @app.route('/reviews', methods=["GET"])
 def reviews():
     if request.method == "GET":
         #return get_mongodb_items()
         data = json.loads(get_mongodb_items()) # gets data from mongoDB python function
         return render_template('reviews.html', data=data)
-
-    return render_template('reviews.html')#, jsonify(game_name)    
+    else:
+        return render_template('reviews.html')
 
 @app.route('/createpost', methods=['POST', 'GET'])
 def createPost():
-    #game_name = request.form['game']
-    game_name = "Cyberpunk 2077" """ Need to fix this later, for now it works and saves to MongoDB!!! """
+    """
+    Creates a review based on user input and stores it in MongoDB
+    - Uses jsonify to store it in MongoDB
+    - Returns: message saying "Post Submitted"
+    """
+    game_name = request.form['game_name']
     title = request.form['title']
     author = request.form['author']
     dateCreated = datetime.datetime.now().year
     content = request.form['content']
-    
-    print(title, author, content, dateCreated, game_name)
 
     json_stuff = jsonify(game_name, title, author, dateCreated, content)
-    print(json_stuff)
+    # print(json_stuff)
 
     if game_name and title and author and content:
         store_post_mongodb(game_name, title, author, dateCreated, content)
     return jsonify({'message': "Post submitted!"})
 
-app.route('/store', methods=['GET'])
-def get_games():
-    """
-    Gets all the games list from the database
-    :return: games from database
-    """
-    return get()
+@app.route('/deletereview', methods=['POST'])
+def delete_reviews():
+    stuff = jsonify(store_post_mongodb())
+    print(stuff)
 
-
-@app.route('/add', methods=['POST'])
-def add_game():
-    """
-    adds the game information to the table
-    :return: Game added message
-    """
-    if not request.is_json:
-        return jsonify({"msg": "Missing JSON in request"}), 400
-
-    create(request.get_json())
-    return 'Game Added'
 
 @app.errorhandler(404)
 def page_not_found(error):

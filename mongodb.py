@@ -43,5 +43,13 @@ def store_post_mongodb(game_name, title, author, dateCreated, content):
     print(json_data_to_mongoDB)
     mongoDB_collection.insert_one(json_data_to_mongoDB)
 
+def delete_review_mongodb(game_name, title, author, dateCreated, content):
+    """
+    Deletes the post from Mongo collection
+    - deletes reviews from MongoDB
+    """
+    # Write to MongoDB
+    json_data_to_delete = {"game": game_name, "title": title, "author": author, "dateCreated": dateCreated, "content": content}
 
-
+    print(json_data_to_delete)
+    mongoDB_collection.delete_one(json_data_to_delete)
