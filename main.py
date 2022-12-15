@@ -59,6 +59,20 @@ def form():
 def games():
     return render_template('games.html')
 
+@app.route('/games_info')
+def games_mongoDB(): # gets game info from mongodb using Google Cloud Functions!
+    url = "https://europe-west2-advanceddev-011111010001.cloudfunctions.net/function-1"
+
+    url_Response = requests.get(url)
+
+    json_response = url_Response.text
+    print(json_response)
+
+    data = json.loads(json_response)
+    print(data)
+
+    return render_template('gamesinfo.html', data=data)
+
 @app.route('/reviews', methods=["GET"])
 def reviews():
     if request.method == "GET":

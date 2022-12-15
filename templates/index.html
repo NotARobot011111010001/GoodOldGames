@@ -8,12 +8,12 @@
       <meta name="author" content="MHG">
 
       <title>Good Old Games</title>
-      <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+      <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
       
       <!-- CSS -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
-      <link href="static/css/style.css" rel="stylesheet">
+      <link href="/static/css/style.css" rel="stylesheet">
 
       <!-- Firebase stuff -->
       <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
@@ -28,12 +28,12 @@
     </head>
     
     <!-- Jinja2 stuff related to generating nav and setting active state. Add more pages here! -->
-    {% set navigation_bar = [('/', 'home', 'Home'), ('/games', 'games', 'Games'), ('/about', 'about', 'About'), ('/reviews', 'reviews', 'Reviews'), ('/login', 'login', 'Login')] -%}
+    {% set navigation_bar = [('/', 'home', 'Home'), ('/games', 'games', 'Games'), ('/games_info', 'gamesinfo', 'Games Info') , ('/about', 'about', 'About'), ('/reviews', 'reviews', 'Reviews'), ('/login', 'login', 'Login')] -%}
 
     {% set active_page = active_page|default('home') -%}
 
     <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top navbar-">
+        <nav id="nav_bar" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
             <!-- Navbar branding. -->
             <a class="navbar-brand" href="/">Good Old Games!</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
@@ -61,102 +61,85 @@
             {% block content %}
             {% endblock %}
         </main><!-- /.container -->
-      <section class="released-games-area gray-bg pt-115 pb-70">
-        <div class="container"> <!-- GET games from MongoDB -->
-          {% for d in data %}
-            <div class="row justify-content-center">
-              <div >
-                <h3><b>Author: </b> {{ d['author'] }}</h3>
-                <h3><b>Game: </b> {{d['game']}}</h3>
-                <h3><b>Title of Review: </b> {{ d['title'] }}</h3>
-                <h3><b>Date Created: </b>{{ d['dateCreated'] }}</h3>       
-                <p><b>Description: </b> {{ d['content'] }}</p>
-                <button id="delete-review" class="justify-content-center w3-button w3-ripple w3-red w3-round" type="submit">Delete review</button>
-                </br>
-              </div>
-            </div>
-          {% endfor %}
-        </div>
-      </section>
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src = "/static/scripts/script.js"></script> -->
-    </body>
-
-    <footer>
-      <div class="footer-top footer-bg s-footer-bg" id="footer-all-pages">
-          <div class="container">
-              <div class="row justify-content-between">
-                  <div class="col-xl-3 col-lg-4 col-md-6">
-                      <div class="footer-widget mb-50">
-                          <div class="footer-logo mb-35">
-                              <a href="#"><img src="/images/icons8-joystick-cloud-96.png" alt="GOG Icon"></a>
+        
+        <footer>
+          <div class="footer-top footer-bg s-footer-bg" id="footer-all-pages">
+              <div class="container">
+                  <div class="row justify-content-between">
+                      <div class="col-xl-3 col-lg-4 col-md-6">
+                          <div class="footer-widget mb-50">
+                              <div class="footer-logo mb-35">
+                                  <a href="#"><img src="/static/images/icons8-joystick-cloud-96.png" alt="GOG Icon"></a>
+                              </div>
+                              <div class="footer-text">
+                                  <p>The Good Old Games! game store is home to the biggest collection of video games and video game DLC's on the internet.</p>
+                                  <div class="footer-contact">
+                                      <ul>
+                                          <li><i class="fas fa-map-marker-alt"></i> <span>Address : 
+                                              </span>Bournemouth University, Fern Barrow, Poole, Dorset,
+                                              BH12 5BB, United Kingdom</li>
+                                          <li><i class="fas fa-headphones"></i> <span>Phone : +44 (0)1202 524111</li>
+                                          <li><i class="fas fa-envelope-open"></i><span>Email : </span>GoodOldGames@exemple.com</li>
+                                      </ul>
+                                  </div>
+                              </div>
                           </div>
-                          <div class="footer-text">
-                              <p>The Good Old Games! game store is home to the biggest collection of video games and video game DLC's on the internet.</p>
-                              <div class="footer-contact">
+                      </div>
+                      <div class="col-xl-2 col-lg-3 col-sm-6">
+                          <div class="footer-widget mb-50">
+                              <div class="fw-title mb-35">
+                                  <h5>Need Help?</h5>
+                              </div>
+                              <div class="fw-link">
                                   <ul>
-                                      <li><i class="fas fa-map-marker-alt"></i> <span>Address : 
-                                          </span>Bournemouth University, Fern Barrow, Poole, Dorset,
-                                          BH12 5BB, United Kingdom</li>
-                                      <li><i class="fas fa-headphones"></i> <span>Phone : +44 (0)1202 524111</li>
-                                      <li><i class="fas fa-envelope-open"></i><span>Email : </span>GoodOldGames@exemple.com</li>
+                                      <li><a href="#">Terms &amp; Conditions</a></li>
+                                      <li><a href="/privacy-policy">Privacy Policy</a></li>
+                                      <li><a href="#">Refund Policy</a></li>
+                                      <li><a href="#">Affiliate</a></li>
+                                      <li><a href="#">FAQ</a></li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-xl-3 col-lg-4 col-md-6">
+                          <div class="footer-widget mb-50">
+                              <div class="fw-title mb-35">
+                                  <h5>Follow us</h5>
+                              </div>
+                              <div class="footer-social">
+                                  <ul>
+                                      <li><a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i>facebook</a></li>
+                                      <li><a href="https://twitter.com"><i class="fab fa-twitter"></i>twitter</a></li>
                                   </ul>
                               </div>
                           </div>
                       </div>
                   </div>
-                  <div class="col-xl-2 col-lg-3 col-sm-6">
-                      <div class="footer-widget mb-50">
-                          <div class="fw-title mb-35">
-                              <h5>Need Help?</h5>
-                          </div>
-                          <div class="fw-link">
-                              <ul>
-                                  <li><a href="#">Terms &amp; Conditions</a></li>
-                                  <li><a href="#">Privacy Policy</a></li>
-                                  <li><a href="#">Refund Policy</a></li>
-                                  <li><a href="#">Affiliate</a></li>
-                                  <li><a href="#">FAQ</a></li>
-                              </ul>
+              </div>
+          </div>
+          <div class="copyright-wrap s-copyright-wrap" id="copyright-stuff">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-6 col-md-6">
+                          <div class="copyright-text">
+                              <p>Copyright © 2022 <a href="#">GOG</a> All Rights Reserved.</p>
                           </div>
                       </div>
-                  </div>
-                  <div class="col-xl-3 col-lg-4 col-md-6">
-                      <div class="footer-widget mb-50">
-                          <div class="fw-title mb-35">
-                              <h5>Follow us</h5>
+                      <div class="col-lg-6 col-md-6 d-none d-md-block">
+                          <div class="payment-method-img text-right">
+                              <img src="/static/images/card_img.png" alt="payment cards accepted image">
                           </div>
-                          <div class="footer-social">
-                              <ul>
-                                  <li><a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i>facebook</a></li>
-                                  <li><a href="https://twitter.com"><i class="fab fa-twitter"></i>twitter</a></li>
-                              </ul>
-                          </div>
-                      </div>
+                        </div>
                   </div>
               </div>
           </div>
-      </div>
-      <div class="copyright-wrap s-copyright-wrap" id="copyright-stuff">
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-6 col-md-6">
-                      <div class="copyright-text">
-                          <p>Copyright © 2020 <a href="#">GOG</a> All Rights Reserved.</p>
-                      </div>
-                  </div>
-                  <div class="col-lg-6 col-md-6 d-none d-md-block">
-                      <div class="payment-method-img text-right">
-                          <img src="/images/card_img.png" alt="payment cards image">
-                      </div>
-                    </div>
-              </div>
-          </div>
-      </div>
-  </footer>
+      </footer>
+    </body>
 </html>
 

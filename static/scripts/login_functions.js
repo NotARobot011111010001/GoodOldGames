@@ -24,7 +24,7 @@ window.addEventListener('load', function() {
         firebase.auth.EmailAuthProvider.PROVIDER_ID,
     ],
     // Terms of service url.
-    tosUrl: '<your-tos-url>'
+    tosUrl: 'https://www.privacypolicygenerator.org/live.php?token=5RL7wPYDaYFwiyTwS89vrqVdIVOaa0ec'
   };
   //firebase.auth().onAuthStateChanged(function(user) {
   firebase.auth().onAuthStateChanged(function(user) {

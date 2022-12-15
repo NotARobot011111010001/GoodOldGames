@@ -3,6 +3,21 @@
  */
 body {
 	padding: 5em;
+	background-color: rgba(0, 0, 0, 0);
+	background-position-x: center;
+	background-position-y: bottom;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-image: url("/static/images/background_spotlight.jpg");
+	background-size: cover;
+	background-origin: padding-box;
+	background-clip: border-box;
+	opacity: 0.95;
+	padding-bottom: 2em;
+}
+
+#nav_bar{
+	background-color: #171a21;
 }
 
 /**
@@ -58,13 +73,13 @@ form {
 }
 
 #footer-all-pages {
-	margin-top: 300px;
-	margin-bottom: 50px;
+	margin-top: 150px;
+	margin-bottom: 10px;
+	position: relative;
+	max-width: 2560px;
+	min-width: 560px;
 }
 
-#copyright-stuff {
-	margin-bottom: 50px;
-}
 .group { 
 	position: relative; 
 	margin-bottom: 45px; 
@@ -254,16 +269,16 @@ select:-webkit-autofill {
 	z-index: 2;
 }
 .released-game-item-bg {
-	background-image: url(/images/released_game_img02.jpg);
+	background-image: url(/static/images/background_spotlight.jpg);
 	position: absolute;
 	left: 0;
 	top: 0;
 	height: 100%;
 	width: 100%;
 	background-position: center;
-	background-size: cover;
+	background-size:cover;
 	z-index: -1;
-	opacity: .05;
+	opacity: .40;
 }
 
 .released-game-content h4 {
@@ -279,7 +294,6 @@ select:-webkit-autofill {
 }
 .released-game-content h4::before {
 	content: "";
-	background-image: url(/images/thewitcher3.jpg);
 	position: absolute;
 	right: -50px;
 	top: 0;
@@ -311,6 +325,9 @@ select:-webkit-autofill {
 	font-weight: 500;
 	color: #6c6c6c;
 	margin-bottom: 30px;
+}
+.released-game-information {
+	padding-left: 0px;
 }
 .released-game-content .btn {
 	font-size: 14px;

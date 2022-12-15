@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+{% set active_page = "gamesinfo" %}
+{% block content %}
+
+<h1>Games Information!</h1>
+
+<div class="container"> <!-- GET game info from MongoDB using Google Cloud Function -->
+    {% for d in data %}
+        <div class="justify-content-center">
+            <div >
+                <h3><b>Game: </b>           {{ d['Game'] }}</h3>
+                <h3><b>Developer: </b>      {{ d['Developer'] }}</h3>
+                <h4><b>Category: </b>       {{ d['Category'] }}</h4>
+                <p><b>Description: </b>     {{ d['Description'] }}</p>
+                <h3><b>Price: </b>          {{ d['Price'] }}</h3>
+                <button id="buy-button" class="justify-content-center w3-button w3-ripple w3-red w3-round" type="submit">Buy Now!</button> <!-- Delete reviews from MongoDB-->
+                </br>
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
