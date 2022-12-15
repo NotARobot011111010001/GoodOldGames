@@ -68,12 +68,9 @@ def games_mongoDB():
     url = "https://europe-west2-advanceddev-011111010001.cloudfunctions.net/function-1"
 
     url_Response = requests.get(url)
-
     json_response = url_Response.text
-    print(json_response)
 
     data = json.loads(json_response)
-    print(data)
 
     return render_template('gamesinfo.html', data=data)
 
