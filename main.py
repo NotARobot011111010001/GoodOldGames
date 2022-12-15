@@ -60,7 +60,11 @@ def games():
     return render_template('games.html')
 
 @app.route('/games_info')
-def games_mongoDB(): # gets game info from mongodb using Google Cloud Functions!
+def games_mongoDB(): 
+    """ USES "GET"
+    - GETs game information from mongodb using Google Cloud Functions!
+    """
+
     url = "https://europe-west2-advanceddev-011111010001.cloudfunctions.net/function-1"
 
     url_Response = requests.get(url)
@@ -104,9 +108,43 @@ def createPost():
 
 @app.route('/deletereview', methods=['POST'])
 def delete_reviews():
+    """
+    Deletes reviews from MongoDB
+    """
     stuff = jsonify(store_post_mongodb())
     print(stuff)
 
+
+@app.route("/mongo", methods = ["GET"])
+def mesh_mongo():
+    """
+    Gets reviews from MongoDB using Google Cloud Functions!
+    TODO: Add the reviews to an html file (reviews_mongoDB.html)
+    """
+    url = "https://europe-west2-advanceddev-011111010001.cloudfunctions.net/Service_Mesh_Layer_Function"
+    req = requests.post(url, json = {
+        "source": "mongo",
+        }, headers = {
+            "Content-type": "application/json",
+            "Accept": "text/plain"
+            })
+    return req.content
+
+@app.route("/google", methods = ["GET"])
+def mesh_google():
+    """
+    Gets reviews from Google Storage Buckets using Google Cloud Functions!
+    TODO: Add the reviews to a webpage (reviews_googlebucket.html)
+    """
+    url = "https://europe-west2-advanceddev-011111010001.cloudfunctions.net/Service_Mesh_Layer_Function"
+    
+    req = requests.post(url, json = {
+        "source": "google",
+        }, headers = {
+            "Content-type": "application/json",
+            "Accept": "text/plain"
+        })
+    return (req.content)
 
 @app.errorhandler(404)
 def page_not_found(error):

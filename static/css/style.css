@@ -60,8 +60,9 @@ form {
 }
 
 .form-inline{
+	margin-top: 50px;
 	padding: 3em;
-	margin: auto;
+	margin-bottom: 50px;
 	display: block;
 	background-color: rgb(23, 25, 26);
 }
@@ -78,6 +79,14 @@ form {
 	position: relative;
 	max-width: 2560px;
 	min-width: 560px;
+}
+
+.games-info-header {
+	margin-bottom: 20px;
+}
+
+.games-info-info {
+	margin-bottom: 100px;
 }
 
 .group { 

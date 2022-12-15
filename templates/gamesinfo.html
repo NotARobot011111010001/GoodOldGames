@@ -2,7 +2,8 @@
 {% set active_page = "gamesinfo" %}
 {% block content %}
 
-<h1>Games Information!</h1>
+<h1 class="games-info-header">Games Information!</h1>
+<h3 class="games-info-info">This is where you will find more information about each game i.e. price and the devs!</h3>
 
 <div class="container"> <!-- GET game info from MongoDB using Google Cloud Function -->
     {% for d in data %}
@@ -13,8 +14,7 @@
                 <h4><b>Category: </b>       {{ d['Category'] }}</h4>
                 <p><b>Description: </b>     {{ d['Description'] }}</p>
                 <h3><b>Price: </b>          {{ d['Price'] }}</h3>
-                <button id="buy-button" class="justify-content-center w3-button w3-ripple w3-red w3-round" type="submit">Buy Now!</button> <!-- Delete reviews from MongoDB-->
-                </br>
+                <button id="buy-button" class="justify-content-center w3-button w3-ripple w3-red w3-round" style="align-content:center;"  type="submit">Buy Now!</button> <!-- Delete reviews from MongoDB-->
 
             </div>
         </div>

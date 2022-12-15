@@ -28,7 +28,7 @@
     </head>
     
     <!-- Jinja2 stuff related to generating nav and setting active state. Add more pages here! -->
-    {% set navigation_bar = [('/', 'home', 'Home'), ('/games', 'games', 'Games'), ('/games_info', 'gamesinfo', 'Games Info') , ('/about', 'about', 'About'), ('/reviews', 'reviews', 'Reviews'), ('/login', 'login', 'Login')] -%}
+    {% set navigation_bar = [('/', 'home', 'Home'), ('/games', 'games', 'Games'), ('/games_info', 'gamesinfo', 'Games Info') , ('/reviews', 'reviews', 'Reviews'), ('/mongo', 'mongo', 'Reviews (MongoDB)'),('/google', 'google', 'Reviews (Google-Bucket)'), ('/about', 'about', 'About'), ('/login', 'login', 'Login')] -%}
 
     {% set active_page = active_page|default('home') -%}
 
@@ -36,7 +36,7 @@
         <nav id="nav_bar" class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
             <!-- Navbar branding. -->
             <a class="navbar-brand" href="/">Good Old Games!</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="true" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">

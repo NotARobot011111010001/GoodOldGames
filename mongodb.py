@@ -19,17 +19,11 @@ def get_mongodb_items():
     """
     Gets reviews from MongoDB
     """
-    #game_name = request.form['game-name']
-    # create queries
-    
-    title_query = {"game": {"$in": ["Cyberpunk 2077", "The Witcher 3: Wild Hunt", "Battlefield 4", "Battlefield 2042", "Assasin's Creed Origins", "Assasin's Creed Black Flag" ]}}
-    dateCreated_query = {"dateCreated": {"$gt": 2010}}
-    myCursor = mongoDB_collection.find({"$and": [title_query, dateCreated_query]})
+    myCursor2 = mongoDB_collection.find()
 
-    list_cur = list(myCursor)
-    #print(list_cur)
+    list_cur2 = list(myCursor2)
     
-    json_data = dumps(list_cur)
+    json_data = dumps(list_cur2)
     return json_data
 
 def store_post_mongodb(game_name, title, author, dateCreated, content):

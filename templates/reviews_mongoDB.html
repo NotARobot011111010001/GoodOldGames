@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% set active_page = "games" %}
+{% block content %}
+
+<h1 class="reviews-mongodb">Reviews From Service Mesh Cloud Function! (MongoDB)</h1>
+
+<div>
+    <p id="author">me</p>
+    <p id="title">me</p>
+    <p id="dateCreated">me</p>
+    <p id="content">me</p>
+  </div>
+
+<script>
+    function getElement(id) {
+        return document.getElementById(id);
+}
+
+fetch('https://europe-west2-advanceddev-011111010001.cloudfunctions.net/get_reviews_mongoDB')
+.then(res => res.json())
+.then((res) => {
+  const data = res.data;
+  console.log(data)
+  getElement('author').innerHTML =  'Author: ' + data.author;
+  getElement('title').innerHTML = 'Title: ' + data.title;
+  getElement('dateCreated').innerHTML = 'Date Created: ' + data.dateCreated;
+  getElement('content').innerHTML = 'Review: ' + data.content;
+  // do the rest here
+});
+</script>
+
+{% endblock %}
