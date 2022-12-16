@@ -103,7 +103,7 @@ def createPost():
         store_post_mongodb(game_name, title, author, dateCreated, content)
     return jsonify({'message': "Post submitted!"})
 
-@app.route('/deletereview', methods=['POST'])
+@app.route('/deletereview', methods=['DELETE'])
 def delete_reviews():
     """
     Deletes reviews from MongoDB
