@@ -7,7 +7,7 @@ import json
 # end imports
 
 cluster = MongoClient(
-    "mongodb+srv://admin:axCyth27ZUkPrWM@advdevapp.v35rz2w.mongodb.net/?retryWrites=true&w=majority") # link to access, read and write to MongoDB
+    "mongodb+srv://admin:###########@advdevapp.v35rz2w.mongodb.net/?retryWrites=true&w=majority") # link to access, read and write to MongoDB
 
 db = cluster["GameStore"] # database name
 
